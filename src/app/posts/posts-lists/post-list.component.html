@@ -1,6 +1,9 @@
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>Expansion Title</mat-expansion-panel-header>
-    <p>Hello World</p>
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>{{ post.title }}</mat-expansion-panel-header>
+    <p>{{ post.content }}</p>
   </mat-expansion-panel>
 </mat-accordion>
+<h3 class="mat-head-2" *ngIf="posts.length <= 0">
+  No posts have been added yet. <br />Submit your first post above!
+</h3>

@@ -3,11 +3,14 @@
 <!-- two way binding example combines the setting and the reading of a value-->
 <mat-card>
   <mat-form-field>
-    <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
+    <input matInput type="text" [(ngModel)]="enteredTitle" />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
   </mat-form-field>
 </mat-card>
 <hr />
 <button mat-raised-button color="accent" (click)="onAddPost()">
-  Save Post
+  Submit Post
 </button>
 <hr />
