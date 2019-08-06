@@ -1,16 +1,40 @@
 <!-- one way binding example
 <textarea rows="6" [value]="newPost" #postInput></textarea> -->
-<!-- two way binding example combines the setting and the reading of a value-->
+<!-- two way binding example combines the setting and the reading of a value,,,,,
+  when angular detects a form element it will auto create a js object that represents the form-->
 <mat-card>
-  <mat-form-field>
-    <input matInput type="text" [(ngModel)]="enteredTitle" />
-  </mat-form-field>
-  <mat-form-field>
-    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
-  </mat-form-field>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        ngModel
+        required
+        minlength="3"
+        placeholder="Title"
+        #title="ngModel"
+      />
+      <mat-error *ngIf="title.invalid"
+        >Please enter a valid post title.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="6"
+        name="content"
+        ngModel
+        placeholder="Whatever is on your mind"
+        required
+        maxlength="250"
+        #content="ngModel"
+      ></textarea>
+      <mat-error *ngIf="content.invalid"> Please enter a valid post.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit">
+      Submit Post
+    </button>
+  </form>
 </mat-card>
-<hr />
-<button mat-raised-button color="accent" (click)="onAddPost()">
-  Submit Post
-</button>
 <hr />
