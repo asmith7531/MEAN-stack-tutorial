@@ -1,11 +1,13 @@
 <!-- one way binding example
 <textarea rows="6" [value]="newPost" #postInput></textarea> -->
-<!-- two way binding example-->
+<!-- two way binding example combines the setting and the reading of a value-->
 <mat-card>
   <mat-form-field>
     <textarea matInput rows="6" [(ngModel)]="enteredValue"></textarea>
   </mat-form-field>
 </mat-card>
 <hr />
-<button (click)="onAddPost()">Save Post</button>
-<p>{{ newPost }}</p>
+<button mat-raised-button color="accent" (click)="onAddPost()">
+  Save Post
+</button>
+<hr />
